@@ -1,0 +1,14 @@
+Package: hhill
+Type: Package
+Title: Huntington-Hill Method of Legislative Seat Allocation
+Version: 0.1.0
+Author: Alexander Adams
+Maintainer: Alexander Adams <alex@alexanderadams.org>
+Description: Small package for calculating the number of seats allocated to
+    jurisdictions in legislative chambers using the Huntington-Hill method,
+    used by the U.S. House of Representatives. 
+License: MIT License
+Encoding: UTF-8
+Requires: magrittr,dplyr
+LazyData: true
+RoxygenNote: 7.3.1
