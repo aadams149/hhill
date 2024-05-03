@@ -4,41 +4,74 @@
 \alias{hhill}
 \title{Huntington-Hill method of legislative seat allocation}
 \usage{
-hhill(names, populations, seats, min = 1, exclude = c())
+hhill(
+  names,
+  populations,
+  seats,
+  min = 1,
+  exclude = c(),
+  quiet = TRUE,
+  detailed = TRUE
+)
 }
 \arguments{
-\item{names}{A vector of names of entities to be allocated seats. All values in this vector must be unique.}
+\item{names}{A vector of names of entities to be allocated seats.
+All values in this vector must be unique.}
 
-\item{populations}{A vector of populations to be used in calculating Huntington-Hill scores. This should be ordered to align with the
-vector of names. Ideally, these two arguments are drawn from the same data frame.}
+\item{populations}{A vector of populations to be used in calculating
+Huntington-Hill scores. This should be ordered to align with the
+vector of names. Ideally, these two arguments are drawn from the same
+data frame.}
 
-\item{seats}{The total number of seats to be allocated in the political body.}
+\item{seats}{The total number of seats to be allocated in the
+political body.}
 
-\item{min}{The minimum number of seats allocated to each entity. Default is 1, the minimum number of seats for each state in the
+\item{min}{The minimum number of seats allocated to each entity.
+Default is 1, the minimum number of seats for each state in the
 House of Representatives.}
 
-\item{exclude}{A vector of entities to exclude from consideration when allocating seats.}
+\item{exclude}{A vector of entities to exclude from consideration
+when allocating seats.}
+
+\item{quiet}{Boolean for printing a progress message. Defaults to TRUE.}
+
+\item{detailed}{Boolean for returning a list which includes a
+data frame of every seat in the order it was allocated, instead of
+just the totals. Defaults to TRUE.}
 }
 \value{
 A list object containing the following:
 
 
-* `seat_order`, data frame of length seats-nrow(names), showing the order in which seats were allocated. Includes the Huntington-Hill score,
-the entity which received the seat, which number seat that is for the entity, and which number seat that is for the chamber.
+* `seat_order`, data frame of length seats-nrow(names), showing the
+order in which seats were allocated.
+Includes the Huntington-Hill score,
+the entity which received the seat, which number seat that is for the
+entity, and which number seat that is for the chamber.
+(Only if `detailed` == TRUE).
 
 
-* `min_seat`, a vector of entity names which were allocated the minimum number of seats as defined in the function call.
+* `min_seat`, a vector of entity names which were allocated the minimum
+number of seats as defined in the function call.
 
 
-* `final_seats`, a data frame showing the total number of seats allocated to each entity.
+* `final_seats`, a data frame showing the total number of seats
+allocated to each entity.
 }
 \description{
 `hhill()` implements the Huntington-Hill method of legislative
- seat allocation which is currently used by the United States House of Representatives.
- The Huntington-Hill method is calculated as follows: each entity represented in the chamber
- is assigned a score, calculated as the population of that entity divided by the square root
- of *n*(*n*+1), where *n* is the current number of seats allocated to that entity. All entities are assigned
- the minimum number of seats, and then scores are calculated. The entity with the highest score receives a seat,
- its *n* value increments by 1, and then scores are recalculated. The new entity with the highest score receives a seat,
- increments its *n*, and the process repeats until all available seats have been allocated.
+ seat allocation which is currently used by the
+ United States House of Representatives.
+ The Huntington-Hill method is calculated as follows:
+ each entity represented in the chamber
+ is assigned a score, calculated as the population of that
+ entity divided by the square root
+ of  \emph{n}(\emph{n}+1), where \emph{n} is the current number of seats
+ allocated to that entity. All entities are assigned
+ the minimum number of seats, and then scores are calculated.
+ The entity with the highest score receives a seat,
+ its \emph{n} value increments by 1, and then scores are recalculated.
+ The new entity with the highest score receives a seat,
+ increments its \emph{n}, and the process repeats until all available
+ seats have been allocated.
 }
