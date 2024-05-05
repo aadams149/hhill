@@ -1,7 +1,7 @@
 Package: hhill
 Type: Package
 Title: Huntington-Hill Method of Legislative Seat Allocation
-Version: 0.1.0
+Version: 0.1.1
 Author: Alexander Adams
 Maintainer: Alexander Adams <alex@alexanderadams.org>
 Description: Small package for calculating the number of seats allocated to
